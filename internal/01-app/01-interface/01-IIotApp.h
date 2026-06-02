@@ -2,6 +2,11 @@
 #define IIOTAPP_INTERNAL_H
 
 #include <StandardDefines.h>
+#include "threading/IRunnable.h"
+#include <threading/ThreadPoolCore.h>
+#include <threading/ThreadPoolStackSize.h>
+#include <memory>
+#include <type_traits>
 
 DefineStandardPointers(IIotApp)
 class IIotApp {
