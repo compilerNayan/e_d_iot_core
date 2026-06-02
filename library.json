@@ -9,6 +9,7 @@
     "url": "https://github.com/compilerNayan/e_d_iot_core.git"
   },
   "dependencies": {
+    "c_b_device_connectivity": "https://github.com/compilerNayan/c_b_device_connectivity.git",
     "d_b_device_identity": "https://github.com/compilerNayan/d_b_device_identity.git"
   },
   "license": "MIT",
