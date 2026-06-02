@@ -21,15 +21,6 @@
 class IotApp final : public IIotApp {
 
     Public IotApp() {
-
-        StartWiFiHealthCheckerThread();
-        StartInternetHealthCheckerThread();
-        StartTcpServerThread();
-        StartMqttClientThread();
-        StartRequestManagerThread();
-        StartDeviceManagerThread();
-    
-
         AddStartupThread<WiFiHealthCheckerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_4);
         AddStartupThread<InternetHealthCheckerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_4);
         AddStartupThread<TcpServerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_8);
@@ -42,11 +33,11 @@ class IotApp final : public IIotApp {
 
     Public Virtual Void Start() override {
         logger->Info(Tag::Untagged, StdString("[ArduinoSpringBootApp] Starting app..."));
-        if (deviceDiagnostics->HadPreviousCrash()) {
+        /*if (deviceDiagnostics->HadPreviousCrash()) {
             logger->Info(Tag::Untagged, StdString("[ArduinoSpringBootApp] Previous run: crashed (core dump/panic)."));
         } else {
             logger->Info(Tag::Untagged, StdString("[ArduinoSpringBootApp] Previous run: normal."));
-        }
+        }*/
         for (Size i = 0; i < startupThreads.size(); ++i) {
             if (startupThreads[i]) {
                 threadPool->Execute(startupThreads[i], startupThreadCores[i], startupThreadStackSize[i]);
