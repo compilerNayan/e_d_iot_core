@@ -15,6 +15,7 @@
 #include "MqttClientThread.h"
 #include "RequestManagerThread.h"
 #include "DeviceManagerThread.h"
+#include "LogPublisherThread.h"
 
 
 /* @Component */
@@ -27,6 +28,7 @@ class IotApp final : public IIotApp {
         AddStartupThread<MqttClientThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_16);
         AddStartupThread<RequestManagerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_8);
         AddStartupThread<DeviceManagerThread>(ThreadPoolCore::Application, ThreadPoolStackSize::KB_12);
+        AddStartupThread<LogPublisherThread>(ThreadPoolCore::Application, ThreadPoolStackSize::KB_6);
     }
 
     Public Virtual ~IotApp() = default;
