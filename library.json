@@ -1,0 +1,17 @@
+{
+  "name": "e_d_iot_core",
+  "version": "1.0.0",
+  "description": "A header-only Arduino/PlatformIO IoT core library",
+  "keywords": ["arduino", "iot", "core"],
+  "authors": [{"name": "Nayan"}],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/compilerNayan/e_d_iot_core.git"
+  },
+  "dependencies": {
+    "d_b_device_identity": "https://github.com/compilerNayan/d_b_device_identity.git"
+  },
+  "license": "MIT",
+  "frameworks": "*",
+  "platforms": "*"
+}
