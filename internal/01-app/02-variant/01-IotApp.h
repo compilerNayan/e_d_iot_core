@@ -67,12 +67,12 @@ class IotApp final : public IIotApp {
     }
 
     Private Void AddStartupThreads() {
-        AddStartupThread<WiFiHealthCheckerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_4);
-        AddStartupThread<InternetHealthCheckerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_4);
-        AddStartupThread<TcpServerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_8);
-        AddStartupThread<MqttClientThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_16);
-        AddStartupThread<RequestManagerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_8);
-        AddStartupThread<DeviceManagerThread>(ThreadPoolCore::Application, ThreadPoolStackSize::KB_12);
+        AddStartupThread<WiFiHealthCheckerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_3);
+        AddStartupThread<InternetHealthCheckerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_3);
+        AddStartupThread<TcpServerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_7);
+        AddStartupThread<MqttClientThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_14);
+        AddStartupThread<RequestManagerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_7);
+        AddStartupThread<DeviceManagerThread>(ThreadPoolCore::Application, ThreadPoolStackSize::KB_10);
         AddStartupThread<LogPublisherThread>(ThreadPoolCore::Application, ThreadPoolStackSize::KB_6);
         AddStartupThread<DeviceRuntimeMonitorThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_4);
     }
