@@ -67,7 +67,7 @@ class IotApp final : public IIotApp {
     }
 
     Private Void AddStartupThreads() {
-        AddStartupThread<WiFiHealthCheckerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_3);
+        AddStartupThread<WiFiHealthCheckerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_4);
         AddStartupThread<InternetHealthCheckerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_3);
         AddStartupThread<TcpServerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_7);
         AddStartupThread<MqttClientThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_14);
