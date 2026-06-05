@@ -33,14 +33,6 @@ class IotApp final : public IIotApp {
 
     Public Virtual Void Start() override {
         logger->Info(Tag::Untagged, StdString("[ArduinoSpringBootApp] Starting app..."));
-        {
-            const uint32_t caps = MALLOC_CAP_INTERNAL | MALLOC_CAP_8BIT;
-            printf("[Nayan] app_boot heap_free=%lu heap_min=%lu largest_block=%lu\n",
-                (unsigned long)esp_get_free_heap_size(),
-                (unsigned long)esp_get_minimum_free_heap_size(),
-                (unsigned long)heap_caps_get_largest_free_block(caps));
-            fflush(stdout);
-        }
         deviceDiagnostics->CheckAndLogPreviousCrash();
         AddStartupThreads();
         for (Size i = 0; i < startupThreads.size(); ++i) {
