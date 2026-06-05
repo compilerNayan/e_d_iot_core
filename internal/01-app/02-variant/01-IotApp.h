@@ -17,7 +17,7 @@
 #include "DeviceManagerThread.h"
 #include "LogPublisherThread.h"
 #include "IDeviceDiagnostics.h"
-//#include "DeviceRuntimeMonitorThread.h"
+#include "DeviceRuntimeMonitorThread.h"
 
 #include "esp_heap_caps.h"
 #include <cstdio>
@@ -74,7 +74,7 @@ class IotApp final : public IIotApp {
         AddStartupThread<RequestManagerThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_8);
         AddStartupThread<DeviceManagerThread>(ThreadPoolCore::Application, ThreadPoolStackSize::KB_12);
         AddStartupThread<LogPublisherThread>(ThreadPoolCore::Application, ThreadPoolStackSize::KB_6);
-        //AddStartupThread<DeviceRuntimeMonitorThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_4);
+        AddStartupThread<DeviceRuntimeMonitorThread>(ThreadPoolCore::System, ThreadPoolStackSize::KB_4);
     }
 
      /* @Autowired */
