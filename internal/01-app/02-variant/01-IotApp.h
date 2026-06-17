@@ -23,6 +23,7 @@
 #include <cstdio>
 
 
+#ifndef IOT_PUMP_CONTROLLER
 /* @Component */
 class IotApp final : public IIotApp {
 
@@ -82,5 +83,6 @@ class IotApp final : public IIotApp {
      Private StdVector<ThreadPoolCore> startupThreadCores;
      Private StdVector<ThreadPoolStackSize> startupThreadStackSize;
 };
+#endif // IOT_PUMP_CONTROLLER
 
 #endif // IOTAPP_INTERNAL_H
