@@ -20,6 +20,7 @@
 #include "DeviceRuntimeMonitorThread.h"
 
 #include "esp_heap_caps.h"
+#include "esp_log.h"
 #include <cstdio>
 
 
@@ -33,14 +34,19 @@ class IotApp final : public IIotApp {
     Public Virtual ~IotApp() = default;
 
     Public Virtual Void Start() override {
+        ESP_LOGI("BOOT", "[4a] IotApp::Start enter, heap=%u", esp_get_free_heap_size());
         logger->Info(Tag::Untagged, StdString("[ArduinoSpringBootApp] Starting app..."));
+        ESP_LOGI("BOOT", "[4b] before CheckAndLogPreviousCrash");
         deviceDiagnostics->CheckAndLogPreviousCrash();
+        ESP_LOGI("BOOT", "[4c] before AddStartupThreads");
         AddStartupThreads();
+        ESP_LOGI("BOOT", "[4d] starting %u threads", static_cast<unsigned>(startupThreads.size()));
         for (Size i = 0; i < startupThreads.size(); ++i) {
             if (startupThreads[i]) {
                 threadPool->Execute(startupThreads[i], startupThreadCores[i], startupThreadStackSize[i]);
             }
         }
+        ESP_LOGI("BOOT", "[4e] IotApp::Start done");
     }
 
     Public Virtual Void Stop() override {
